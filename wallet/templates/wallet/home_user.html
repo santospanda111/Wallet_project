@@ -1,0 +1,25 @@
+{% block title %}{{ Home }}{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'wallet/style.css' %}">
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'menu_base.html' %}
+<div class="footer-top"  style="margin: 100px;">
+<h3 id="form"><i><img src="../../static/wallet/images/userr.png" alt=" " /></i>&nbsp;&nbsp;{{ user.username.upper }}</h3>
+    <div class="row">
+{% if code_rec %}
+
+        {% if owners %}
+            {% for owner in owners %}
+                    <h3 style="text-align: center;font-weight: 500; font-size: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;Wallet Balance: Rs.{{ owner.balance }}</h3><br>
+            {% endfor %}
+        {% endif %}
+</body>
+</html>
+{% endblock %}

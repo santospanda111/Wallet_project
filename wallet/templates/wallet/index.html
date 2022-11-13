@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/javascript">
+</script>
+  <title>Virtual Wallet</title>
+  <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Amaranth" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'wallet/style.css' %}"/>
+
+  
+</head>
+<body>
+{% if request.user.is_authenticated %}
+<ul class='navi'>
+   <li class='navig'><a id="hd" href="{% url "wallet:index" %}"><i><img src="../../static/wallet/images/iconlogo.png" alt=" " /></i>VIRTUAL WALLET</a></li>
+   <li class='navig'><a id="md" href="{% url "wallet:my_wallet" %}">WALLET</a></li>
+   <li class='navig'><a id="md" href="{% url "wallet:transfer_balance" %}">SEND MONEY</a></li>
+    <li class='navig'><a id="md" href=" {% url 'wallet:all_orders'  %}">REQUEST RECIEVED</a></li>
+    <li class='navig'><a id="md" href="{% url 'wallet:logout_user' %}">LOGOUT</a></li>
+   <li class='navig'><a id="md" href="{% url "wallet:my_wallet" %}"><i><img src="../../static/wallet/images/userr.png" alt=" " /></i>&nbsp;&nbsp;{{ user.username.upper }}</a></li>
+</ul>
+
+    {% else %}
+<ul class='navi'>
+   <li class='navig'><a id="hd" href="{% url "wallet:index" %}"><i><img src="../../static/wallet/images/iconlogo.png" alt=" " /></i>VIRTUAL WALLET</a></li>
+   <li class='navig'><a id="md" href="{% url 'wallet:login_user' %}">LOGIN</a></li>
+    <li class='navig'><a id="md" href="{% url 'wallet:register_user' %}">REGISTER</a></li>
+        <li class='navig'><a id="md" href="{% url "wallet:my_wallet" %}"><i><img src="../../static/wallet/images/userr.png" alt=" " /></i>&nbsp;&nbsp;{{ user.username.upper }}</a></li>
+</ul>
+{% endif %}
+</body>
+</html>
+
